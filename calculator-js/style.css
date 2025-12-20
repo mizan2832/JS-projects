@@ -1,0 +1,61 @@
+body {
+
+    background-image: url("cal.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+div.cal {
+    margin: 100px auto;
+    height: 400px;
+    width: 300px;
+    background-color: #01344C;
+}
+
+div#result {
+    width: 300px;
+    height: 60px;
+    background: #C1C1C1;
+    border-radius: 8px;
+
+}
+
+.table {
+    padding-top: 10px;
+    background-color: gray;
+    height: 340px;
+    width: 300px;
+}
+
+tr {
+    background-color: green;
+
+}
+
+td>button {
+    width: 70px;
+    height: 80px;
+    border-radius: 8px;
+
+}
+
+button:hover {
+    background-color: lightslategray;
+    border-radius: 25px;
+
+}
+
+.key_value{
+    margin-right: 50px;
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.final_result{
+    float: right;
+    font-size: 1.5em;
+    font-weight: bold;
+
+}

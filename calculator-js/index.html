@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cal">
+        <div id="result">
+            <div class="key_value"></div>
+            <div class="final_result"></div>
+        </div>
+
+        <table class="table">
+            
+            <tbody>
+                <tr>
+                    <td><button value="7" id="seven" onclick="cal_value(7)"><p style="font-size: 20px;">7</p></button></td>
+                    <td><button value="8" id="eight" onclick="cal_value(8)"><p style="font-size: 20px;">8</p></button></td>
+                    <td><button value="9" id="nine" onclick="cal_value(9)"><p style="font-size: 20px;">9</p></button></td>
+                    <td><button value="" id="minus" onclick="operator('minus')"><p style="font-size: 20px;">-</p></button></td>
+                </tr>
+                <tr>
+                    <td><button value="4" id="four" onclick="cal_value(4)"><p style="font-size: 20px;">4</p></button></td>
+                    <td><button value="5" id="five" onclick="cal_value(5)"><p style="font-size: 20px;">5</p></button></td>
+                    <td><button value="6" id="six" onclick="cal_value(6)"><p style="font-size: 20px;">6</p></button></td>
+                    <td><button value="" id="plus" onclick="operator('plus')"><p style="font-size: 20px;">+</p></button></td>
+                </tr>
+                <tr>
+                    <td><button value="1" id="one" onclick="cal_value(1)"><p style="font-size: 20px;">1</p></button></td>
+                    <td><button value="2" id="two" onclick="cal_value(2)"><p style="font-size: 20px;">2</p></button></td>
+                    <td><button value="3" id="three" onclick="cal_value(3)"><p style="font-size: 20px;">3</p></button></td>
+                    <td><button value="" id="divide" onclick="operator('devide')"><p style="font-size: 20px;">/</p></button></td>
+                </tr>
+                <tr>
+                    <td><button value="" id="clearentry" onclick="operator('CE')"><p style="font-size: 20px;" >CE</p></button></td>
+                    <td><button value="0" id="zero" onclick="cal_value(0)"><p style="font-size: 20px;" >0</p> </button></td>
+                    <td><button value="." id="fraction" onclick="operator('frac')"><p style="font-size: 20px;padding-bottom:20px;" >.</p></button></td>
+                    <td><button value="" id="result" onclick="operator('equal')"><p style="font-size: 20px;" >=</p> </button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
