@@ -63,8 +63,34 @@
       </div>
     </div>
   </div>
+  <!-- Date Range Filter -->
+<div class="card mb-4 shadow-sm">
+  <div class="card-body">
+    <form class="row g-3 align-items-end">
+      
+      <div class="col-md-4">
+        <label class="form-label">From</label>
+        <input type="date" id="formDate" class="form-control ">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">To</label>
+        <input type="date" id="toDate" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary w-100">
+          <i class="bi bi-funnel"></i> Submit
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
 
   <!-- Add Expense Form -->
+  
   <div class="card mb-4 shadow-sm">
     <div class="card-header bg-white fw-semibold">
       Add New Expense
@@ -73,12 +99,12 @@
       <form class="row g-3">
         <div class="col-md-4">
           <label class="form-label">Date</label>
-          <input type="date" class="form-control">
+          <input id="expenseDate" type="date" class="form-control">
         </div>
 
         <div class="col-md-4">
           <label class="form-label">Category</label>
-          <select class="form-select">
+          <select id="expenseCategory" class="form-select">
             <option>Food</option>
             <option>Transport</option>
             <option>Rent</option>
@@ -89,22 +115,23 @@
 
         <div class="col-md-4">
           <label class="form-label">Amount</label>
-          <input type="number" class="form-control" placeholder="৳">
+          <input id="expenseAmount" type="number" class="form-control" placeholder="৳">
         </div>
 
         <div class="col-md-12">
           <label class="form-label">Note</label>
-          <textarea class="form-control" rows="2"></textarea>
+          <textarea id="expenseNote" class="form-control" rows="2"></textarea>
         </div>
 
         <div class="col-md-12 text-end">
-          <button type="submit" class="btn btn-success">
+          <button type="submit" onclick="addExpense()" class="btn btn-success">
             <i class="bi bi-save"></i> Save Expense
           </button>
         </div>
       </form>
     </div>
   </div>
+  
 
   <!-- Expense List -->
   <div class="card shadow-sm">
@@ -112,7 +139,7 @@
       Expense List
     </div>
     <div class="card-body p-0">
-      <table class="table table-hover mb-0">
+      <table id="expanseTable" class="table table-hover mb-0">
         <thead class="table-light">
           <tr>
             <th>Date</th>
@@ -161,5 +188,6 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
