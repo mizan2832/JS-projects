@@ -1,95 +1,106 @@
-
+/* =========================
+   GLOBAL DATA
+========================= */
 let expenses = [];
 
 /* =========================
-   ADD EXPENSE
+   ADD EXPENSE (called from onclick)
 ========================= */
 function addExpense() {
+  event.preventDefault(); // prevent form reload
+
   const date = document.getElementById("expenseDate").value;
   const category = document.getElementById("expenseCategory").value;
   const amount = parseFloat(document.getElementById("expenseAmount").value);
   const note = document.getElementById("expenseNote").value;
-
   if (!date || !category || !amount) {
-    alert("Please fill all required fields");
+    alert("Please fill Date, Category, and Amount");
     return;
   }
 
-  console.log(date, category, amount, note)
+  const expense = { date, category, amount, note };
+  expenses.push(expense);
 
-  expenses.push({ date, category, amount, note });
-  console.log(date,category,amount,note);
-  renderExpenses(expenses);
-  updateSummary(expenses);
-
-
-};
-
-/* =========================
-   RENDER TABLE
-========================= */
-function renderExpenses(data) {
-  const table = document.getElementById("expenseTable");
-  table.innerHTML = "";
-
-  data.forEach((exp, index) => {
-    table.innerHTML += `
-      <tr>
-        <td>${exp.date}</td>
-        <td>${exp.category}</td>
-        <td>${exp.note}</td>
-        <td class="text-end text-danger">৳ ${exp.amount}</td>
-        <td class="text-center">
-          <button class="btn btn-sm btn-outline-danger" onclick="deleteExpense(${index})">
-            <i class="bi bi-trash"></i>
-          </button>
-        </td>
-      </tr>
-    `;
-  });
+  appendExpenseRow(expense);
+  clearExpenseForm();
 }
 
 /* =========================
-   DELETE EXPENSE
+   APPEND ROW TO TABLE
 ========================= */
-function deleteExpense(index) {
-  expenses.splice(index, 1);
-  renderExpenses(expenses);
-  updateSummary(expenses);
+function appendExpenseRow(expense) {
+  const table = document.getElementById("expanseTable").querySelector("tbody");
+
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${expense.date}</td>
+    <td>${expense.category}</td>
+    <td>${expense.note || "-"}</td>
+    <td class="text-end text-danger">৳ ${expense.amount}</td>
+    <td class="text-center">
+      <button class="btn btn-sm btn-outline-danger"> 
+        <i class="bi bi-trash"></i>
+      </button>
+    </td>
+  `;
+
+  table.appendChild(row);
 }
 
 /* =========================
-   UPDATE SUMMARY
+   CLEAR FORM
 ========================= */
-function updateSummary(data) {
-  const totalExpense = data.reduce((sum, e) => sum + e.amount, 0);
-  const income = 50000; // static for now
-
-  document.getElementById("totalExpense").innerText = `৳ ${totalExpense}`;
-  document.getElementById("totalIncome").innerText = `৳ ${income}`;
-  document.getElementById("currentBalance").innerText = `৳ ${income - totalExpense}`;
+function clearExpenseForm() {
+  document.getElementById("expenseDate").value = "";
+  document.getElementById("expenseCategory").selectedIndex = 0;
+  document.getElementById("expenseAmount").value = "";
+  document.getElementById("expenseNote").value = "";
 }
 
 /* =========================
    DATE RANGE FILTER
 ========================= */
-document.querySelector(".btn-primary").addEventListener("click", function (e) {
+document.querySelectorAll("form")[0].addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const from = document.querySelector("fromDate").value;
-  const to = document.getElementById("toDate").value;
+  const fromDate = document.getElementById("formDate").value;
+  const toDate = document.getElementById("toDate").value;
 
-  if (!from || !to) {
-    alert("Please select both dates");
+  if (!fromDate || !toDate) {
+    alert("Please select both From and To dates");
     return;
   }
 
-  const filtered = expenses.filter(e =>
-    e.date >= from && e.date <= to
-  );
-  console.log(filtered);
+  if (fromDate > toDate) {
+    alert("From date cannot be greater than To date");
+    return;
+  }
 
-  renderExpenses(filtered);
-  updateSummary(filtered);
+  filterTableByDate(fromDate, toDate);
 });
 
+/* =========================
+   FILTER TABLE ROWS
+========================= */
+function filterTableByDate(fromDate, toDate) {
+  const rows = document
+    .getElementById("expanseTable")
+    .querySelectorAll("tbody tr");
+
+  let total = 0;
+
+  rows.forEach(row => {
+    const rowDate = row.children[0].innerText;
+
+    if (rowDate >= fromDate && rowDate <= toDate) {
+      row.style.display = "";
+      const amountText = row.children[3].innerText.replace("৳", "").trim();
+      total += parseFloat(amountText);
+    } else {
+      row.style.display = "none";
+    }
+  });
+
+  alert("Total Expense for Selected Range: ৳ " + total);
+}
