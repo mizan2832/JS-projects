@@ -1,11 +1,17 @@
 /* =========================
    GLOBAL DATA
 ========================= */
+let total_income = 40000;
 let expenses = [];
+
+document.getElementById("total_income").innerHTML = total_income;
 
 /* =========================
    ADD EXPENSE (called from onclick)
 ========================= */
+
+
+
 function addExpense() {
   event.preventDefault(); // prevent form reload
 
@@ -20,6 +26,7 @@ function addExpense() {
 
   const expense = { date, category, amount, note };
   expenses.push(expense);
+  console.log(expense);
 
   appendExpenseRow(expense);
   clearExpenseForm();
@@ -39,6 +46,9 @@ function appendExpenseRow(expense) {
     <td>${expense.note || "-"}</td>
     <td class="text-end text-danger">৳ ${expense.amount}</td>
     <td class="text-center">
+       <button class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-pencil"></i>
+              </button>
       <button class="btn btn-sm btn-outline-danger"> 
         <i class="bi bi-trash"></i>
       </button>
@@ -47,6 +57,7 @@ function appendExpenseRow(expense) {
 
   table.appendChild(row);
 }
+// 
 
 /* =========================
    CLEAR FORM
