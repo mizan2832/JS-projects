@@ -24,10 +24,16 @@ function addExpense() {
     return;
   }
 
-  const expense = { date, category, amount, note };
-  expenses.push(expense);
-  console.log(expense);
-
+  const expense = { 
+            "date" : date ,
+            "category" : category, 
+            "amount" : amount,
+            "note":  note 
+           };
+  khoros = expenses.push(expense);
+  let total_expense = expenses.reduce((sum,expense) => sum + expense.amount,0);
+  document.getElementById("total_expense").innerHTML=total_expense;
+  console.log(expenses);
   appendExpenseRow(expense);
   clearExpenseForm();
 }
