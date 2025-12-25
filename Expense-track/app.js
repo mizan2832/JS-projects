@@ -4,7 +4,8 @@
 let total_income = 40000;
 let expenses = [];
 
-document.getElementById("total_income").innerHTML = total_income;
+let total_earn = document.getElementById("total_income");
+total_earn.innerHTML = total_income;
 
 /* =========================
    ADD EXPENSE (called from onclick)
@@ -33,7 +34,9 @@ function addExpense() {
   khoros = expenses.push(expense);
   let total_expense = expenses.reduce((sum,expense) => sum + expense.amount,0);
   document.getElementById("total_expense").innerHTML=total_expense;
-  console.log(expenses);
+  document.getElementById("current_balance").innerHTML=Number(total_earn.textContent)-total_expense;
+  
+  
   appendExpenseRow(expense);
   clearExpenseForm();
 }
@@ -43,7 +46,6 @@ function addExpense() {
 ========================= */
 function appendExpenseRow(expense) {
   const table = document.getElementById("expanseTable").querySelector("tbody");
-
   const row = document.createElement("tr");
 
   row.innerHTML = `
@@ -109,7 +111,6 @@ function filterTableByDate(fromDate, toDate) {
 
   rows.forEach(row => {
     const rowDate = row.children[0].innerText;
-
     if (rowDate >= fromDate && rowDate <= toDate) {
       row.style.display = "";
       const amountText = row.children[3].innerText.replace("৳", "").trim();
