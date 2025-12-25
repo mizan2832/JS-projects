@@ -124,10 +124,14 @@
         </div>
 
         <div class="col-md-12 text-end">
-          <button type="submit" onclick="addExpense(event)" class="btn btn-success">
+          <button type="submit" id="saveBtn" onclick="addExpense(event)" class="btn btn-success">
             <i class="bi bi-save"></i> Save Expense
           </button>
+          <button id="updateBtn" class="btn btn-success d-none" onclick="updateExpense(event)">
+            Update Expense
+        </button>
         </div>
+
       </form>
     </div>
   </div>
