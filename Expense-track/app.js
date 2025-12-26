@@ -32,11 +32,21 @@ function addExpense() {
             "amount" : amount,
             "note":  note 
            };
+  let total_khoros = document.getElementById("total_expense");
+  if ((Number(total_khoros.textContent)+expense.amount)>total_income) {
+     const allow = confirm(
+      "⚠ Expense exceeds total income!\n\n" +
+      "Do you still want to add this expense?"
+    );
+
+    if (!allow) {
+      return; // 
+    }
+  }
   expenses.push(expense);
   let total_expense = expenses.reduce((sum,expense) => sum + expense.amount,0);
-  document.getElementById("total_expense").innerHTML=total_expense;
+  total_khoros.innerHTML=total_expense;
   document.getElementById("current_balance").innerHTML=Number(total_earn.textContent)-total_expense;
-
   appendExpenseRow(expense,expenses.length - 1);
   clearExpenseForm();
 }
