@@ -150,6 +150,8 @@ function filterTableByDate(fromDate, toDate) {
 
   let total = 0;
 
+  console.log(rows);
+
   rows.forEach(row => {
     const rowDate = row.children[0].innerText;
     if (rowDate >= fromDate && rowDate <= toDate) {
