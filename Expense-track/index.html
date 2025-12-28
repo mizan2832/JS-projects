@@ -52,8 +52,8 @@
 <div class="tab-content">
 
 
-  <!-- Summary Cards -->
-  <div class="row mb-4">
+  <div class="tab-pane fade show active" id="expenseTab">
+    <div class="row mb-4">
     <div class="col-md-4">
       <div class="card card-summary income shadow-sm">
         <div class="card-body">
@@ -177,6 +177,109 @@
       </table>
     </div> 
   </div>
+  </div>
+  <!-- Summary Cards -->
+
+  <div class="tab-pane fade" id="goalTab">
+
+  <!-- Goal Summary -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="fw-semibold">Current Goal</h6>
+          <h4 id="goalTitle">Save for Emergency</h4>
+          <p class="mb-1">Target: <strong>৳ <span id="goalAmount">20,000</span></strong></p>
+          <p>Deadline: <strong><span id="goalDeadline">30 Jun 2025</span></strong></p>
+
+          <div class="progress mt-3">
+            <div class="progress-bar bg-success" style="width: 35%">
+              35%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Insight -->
+    <div class="col-md-6">
+      <div class="card shadow-sm border-start border-4 border-primary">
+        <div class="card-body">
+          <h6 class="fw-semibold">
+            <i class="bi bi-stars"></i> AI Insight
+          </h6>
+          <p class="mb-0 text-muted">
+            At your current spending rate, you may miss this goal by 12 days.
+            Reducing food expenses by ৳300/week can help you achieve it on time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Set / Update Goal -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-white fw-semibold">
+      Set Savings Goal
+    </div>
+    <div class="card-body">
+      <form class="row g-3">
+
+        <div class="col-md-6">
+          <label class="form-label">Goal Name</label>
+          <input type="text" class="form-control" placeholder="Emergency Fund">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Target Amount (৳)</label>
+          <input type="number" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Deadline</label>
+          <input type="date" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Weekly Spending Limit (৳)</label>
+          <input type="number" class="form-control">
+        </div>
+
+        <div class="col-md-12 text-end">
+          <button type="button" class="btn btn-primary">
+            <i class="bi bi-check-circle"></i> Save Goal
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Weekly Status -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-white fw-semibold">
+      Weekly Status
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between">
+          Week Limit <span>৳ 3,000</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between text-danger">
+          Spent <span>৳ 3,450</span>
+        </li>
+        <li class="list-group-item text-warning">
+          ⚠ You exceeded your weekly limit
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+
+
 
 </div>
 
