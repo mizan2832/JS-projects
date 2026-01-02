@@ -1,3 +1,5 @@
+import { saveHistory } from "./historyCalc.js";
+
 
 export function createCalculator(){
     let current = 0;
@@ -51,14 +53,21 @@ export function createCalculator(){
                     }
                     else 
                         total = total + current;
+                    saveHistory(total);
                     current =0;
                     break;
 
+            };
+
+             function setCurrent(value) {
+                current = value;
+                total = value;
             }
 
              return {
                 total: Math.abs(total),
-                lastop
+                lastop,
+                setCurrent
              };
         }
     }
