@@ -11,50 +11,56 @@ function createCalculator(){
             return current; 
         },
         operator(op){
-            if (op=="plus") {
-                total = total + current;
-                current = 0;
-                lastop = "plus";
-                return {total:total, lastop:lastop};
-            }
-            else if (op=="minus") {
-                total = Math.abs(total - current);
-                current = 0;
-                lastop = "minus";
-                return {total:total, lastop:lastop};
-            }
-            else if (op=="devide") {
-                if(total===0){
+
+            switch(op){
+                case "plus":
+                   total = total + current;
+                   current = 0;
+                   lastop = "plus"; 
+                   break;
+
+                case "minus":
+                    total = Math.abs(total - current);
+                    current = 0;
+                    lastop = "minus";
+                    break;
+
+                case "devide":
+                    if(total===0){
                     total = current;
-                }
-                else if(current===0){
-                    total = total;
-                }
-                else
-                    total = total / current;
-                current = 0;
-                lastop="devide";
-                return {total:total, lastop:lastop};
-            }
-            else if(op=="CE"){
-                current=0;
-                total = 0;
-               return {total:total, lastop:lastop};
+                    }
+                    else if(current===0){
+                        total = total;
+                    }
+                    else
+                        total = total / current;
+                    current = 0;
+                    lastop="devide";
+                    break;
+
+                case "CE":
+                    current=0;
+                    total = 0;
+                    break;
+
+                case "equal":
+                     if(lastop=="minus"){
+                    total = total-current;
+                    }
+                    else if(lastop=="devide") {
+                        total = total / current;
+                    }
+                    else 
+                        total = total + current;
+                    current =0;
+                    break;
 
             }
-            else if(op=="equal"){
-                
-                if(lastop=="minus"){
-                    total = total-current;
-                }
-                else if(lastop=="devide") {
-                    total = total / current;
-                }
-                else 
-                    total = total + current;
-                current =0;
-                return {total:total, lastop:lastop};
-            }
+
+             return {
+                total: Math.abs(total),
+                lastop
+             };
         }
     }
 }
