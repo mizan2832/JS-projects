@@ -19,6 +19,7 @@ window.operator = function (op) {
 
 window.historyBack = () => {
     const value = moveHistory(-1);
+    console.log("History back", value);
     if (value !== null) {
         calc.setCurrent(value);
         document.querySelector("#result .key_value").innerHTML = value;
@@ -28,6 +29,8 @@ window.historyBack = () => {
 
 window.historyForward = () => {
     const value = moveHistory(1);
+    console.log("History forwared", value);
+
     if (value !== null) {
         calc.setCurrent(value);
         document.querySelector("#result .key_value").innerHTML = value;

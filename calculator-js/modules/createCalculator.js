@@ -1,6 +1,5 @@
 import { saveHistory } from "./historyCalc.js";
 
-
 export function createCalculator(){
     let current = 0;
     let total = 0;
@@ -9,6 +8,10 @@ export function createCalculator(){
     return {
         cal_value(number){
             current = current*10 + number;
+            if(lastop=="root"){
+                console.log(lastop,current);
+                document.querySelector("#result .key_value").innerHTML = `"&radic;(${current})"`;
+            }
             return current; 
         },
         operator(op){
@@ -43,6 +46,11 @@ export function createCalculator(){
                     current=0;
                     total = 0;
                     break;
+                case "root":
+                    document.querySelector("#result .key_value").innerHTML = '&radic;()';
+                    total = current;
+                    lastop="root";
+                    break;
 
                 case "equal":
                      if(lastop=="minus"){
@@ -51,24 +59,32 @@ export function createCalculator(){
                     else if(lastop=="devide") {
                         total = total / current;
                     }
+                    else if(lastop=="root") {
+                        total = Math.sqrt(total); 
+                    }
                     else 
                         total = total + current;
                     saveHistory(total);
                     current =0;
                     break;
 
-            };
-
-             function setCurrent(value) {
-                current = value;
-                total = value;
             }
 
              return {
                 total: Math.abs(total),
-                lastop,
-                setCurrent
+                lastop
              };
         }
+        
+    }
+
+    function setCurrent(value){
+        current = value;
+        total = value;
+    }
+    return {
+        cal_value,
+        operator,
+        setCurrent
     }
 }

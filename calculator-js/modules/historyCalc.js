@@ -12,10 +12,7 @@ export function getPointer() {
 export function saveHistory(value) {
     const history = getHistory();
     let pointer = getPointer();
-
-    // remove forward history if new calc happens
     history.splice(pointer + 1);
-
     history.push(value);
     pointer++;
 
