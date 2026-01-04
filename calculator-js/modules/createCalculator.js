@@ -9,8 +9,7 @@ export function createCalculator(){
         cal_value(number){
             current = current*10 + number;
             if(lastop=="root"){
-                console.log(lastop,current);
-                document.querySelector("#result .key_value").innerHTML = `"&radic;(${current})"`;
+                 return `√(${current})`;
             }
             return current; 
         },
@@ -27,6 +26,12 @@ export function createCalculator(){
                     total = Math.abs(total - current);
                     current = 0;
                     lastop = "minus";
+                    break;
+
+                case "multiply":
+                    total = total+ current;
+                    current = 0;
+                    lastop = "multiply";
                     break;
 
                 case "devide":
@@ -59,8 +64,11 @@ export function createCalculator(){
                     else if(lastop=="devide") {
                         total = total / current;
                     }
+                    else if(lastop=="multiply") {
+                        total = (total * current);
+                    }
                     else if(lastop=="root") {
-                        total = Math.sqrt(total); 
+                        total = Math.sqrt(current); 
                     }
                     else 
                         total = total + current;
