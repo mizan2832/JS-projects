@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #0a1310, #264b39);
+    height: 100vh;
+}
+
+.weather-app {
+    height: 100vh;
+    padding: 20px;
+}
+
+.main-panel {
+    background: url('https://images.unsplash.com/1501973801540-537f08ccae7b') center/cover;
+    border-radius: 20px;
+    color: white;
+    padding: 40px;
+}
+
+.location {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.datetime {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.temp-section {
+    margin: 60px 0;
+}
+
+.temperature {
+    font-size: 90px;
+    font-weight: bold;
+}
+
+.temperature span {
+    font-size: 40px;
+}
+
+.condition {
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.weather-stats {
+    text-align: center;
+}
+
+.weather-stats i {
+    font-size: 24px;
+}
+
+.weather-stats p {
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+.side-panel {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px;
+    color: #fff;
+}
+
+.search-box input {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: #5a5353;
+}
+
+.search-box input::placeholder {
+    color: #363333;
+}
+
+.sun-info p {
+    margin: 5px 0;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.forecast-card {
+    background: rgba(27, 27, 27, 0.2);
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    opacity: 0.8;
+}
